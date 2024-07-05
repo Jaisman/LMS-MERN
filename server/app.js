@@ -19,7 +19,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 5010;
 
-app.use(cors());
+// app.use(cors());
+
+app.use(cors({
+  origin: 'https://lms-mern-client-mu.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 
 app.use(express.json());
 
