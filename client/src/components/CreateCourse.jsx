@@ -16,7 +16,7 @@ import { useNavigate,useParams } from 'react-router-dom';
         e.preventDefault();
        try {
         console.log(courseTitle)
-        let response = await axios.post('/api/courses/createCourse',{courseTitle});
+        let response = await axios.post('https://lms-mern-aaj1.onrender.com/api/courses/createCourse',{courseTitle});
         let courseId = response.data.id
         // courseId = useParams()
         navigate(`/createCourse/${courseId}`);

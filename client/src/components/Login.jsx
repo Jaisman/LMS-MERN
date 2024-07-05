@@ -31,7 +31,7 @@ const Login= () => {
     let handleSubmit = async (e) => {
       e.preventDefault();
      try {
-       let response = await axios.post('/api/login/loginUser',{
+       let response = await axios.post('https://lms-mern-aaj1.onrender.com/api/login/loginUser',{
         ...userLoginData
        }) 
        let role = response.data.role;

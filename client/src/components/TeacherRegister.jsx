@@ -34,7 +34,7 @@ function TeacherRegister() {
   let handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      let response = await axios.post(`/api/teacher/teacherRegister`, {
+      let response = await axios.post(`https://lms-mern-aaj1.onrender.com/api/teacher/teacherRegister`, {
         ...teacher
       });
 

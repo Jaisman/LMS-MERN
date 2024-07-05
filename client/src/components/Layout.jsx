@@ -11,7 +11,7 @@ const Layout = () => {
   async function handleClick() {
     try {
       setLoading(true)
-      let response = await axios.get('/api/courses/transcription', {
+      let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/courses/transcription', {
         headers: {
           apiKey: "99624ecb550d4588855a75686d4fd726"
         }
@@ -26,7 +26,7 @@ const Layout = () => {
     }
     const fetchCourse = async () => {
       try {
-        let response = await axios.get('/api/courses/fetchCourse', {
+        let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/courses/fetchCourse', {
           params: {
             id: courseId
           }

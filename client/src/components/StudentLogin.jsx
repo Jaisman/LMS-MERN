@@ -19,7 +19,7 @@ const StudentLogin = () => {
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let response = await axios.post(`/api/student/studentLogin`, {
+        let response = await axios.post(`https://lms-mern-aaj1.onrender.com/api/student/studentLogin`, {
           ...studentLoginData
         });
      console.log(response.data)

@@ -17,7 +17,7 @@ const MyCourses = () => {
              
         async function myCourses(){
           try {
-                let response = await axios.get('/api/teacher/mycourses',{
+                let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/teacher/mycourses',{
                     params:{
                         id
                     }

@@ -17,7 +17,7 @@ const StudentMain = () => {
   let token = localStorage.getItem('token');
   async function authTeacher() {
     try {
-      let response = await axios.get('/api/auth/verify', {
+      let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/auth/verify', {
         headers: {
           token: token
         }

@@ -28,7 +28,7 @@ const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }
         setIsOpen(false);
         let id = teacher._id
         
-        let response = await axios.post('/api/teacher/teacherUpdate',{...teacher},{
+        let response = await axios.post('https://lms-mern-aaj1.onrender.com/api/teacher/teacherUpdate',{...teacher},{
           params:{
               id:id
           }
@@ -45,7 +45,7 @@ const SpringModal = ({ isOpen, setIsOpen,teacher,setTeacher,student,setStudent }
         setIsOpen(false);
         let id = student._id
         
-        let response = await axios.post('/api/student/studentUpdate',{...student},{
+        let response = await axios.post('https://lms-mern-aaj1.onrender.com/api/student/studentUpdate',{...student},{
           params:{
               id:id
           }

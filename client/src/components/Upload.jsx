@@ -47,7 +47,7 @@ const Upload = () => {
 
       const videoUrl = await uploadFile('video');
 
-      await axios.post(`/api/videos/upload`, { imgUrl, videoUrl });
+      await axios.post(`https://lms-mern-aaj1.onrender.com/api/videos/upload`, { imgUrl, videoUrl });
 
       setImg(null);
       setVideo(null);

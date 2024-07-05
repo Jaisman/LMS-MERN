@@ -22,7 +22,7 @@ const AppContext = ({ children }) => {
         async function authUser() {
             try {
                 let token = localStorage.getItem('token')
-                let response = await axios.get('/api/auth/verify', {
+                let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/auth/verify', {
                     headers: {
                         token: token
                     }
@@ -30,7 +30,7 @@ const AppContext = ({ children }) => {
                 let details = response.data.userDetails;
                 let userId = details._id;
                 if (details.role === 'student') {
-                    let userResponse = await axios.get('/api/student/findStudent', {
+                    let userResponse = await axios.get('https://lms-mern-aaj1.onrender.com/api/student/findStudent', {
                         params: {
                             id: userId
                         }
@@ -41,7 +41,7 @@ const AppContext = ({ children }) => {
                     // console.log(userResponse.data, 'findTeacher')
 
                 } else if (details.role === 'teacher') {
-                    let userResponse = await axios.get('/api/teacher/findTeacher', {
+                    let userResponse = await axios.get('https://lms-mern-aaj1.onrender.com/api/teacher/findTeacher', {
                         params: {
                             id: userId
                         }

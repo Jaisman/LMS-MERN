@@ -12,7 +12,7 @@ const SearchCourse = () => {
 
   let getCourses = async () => {
     try {
-      let response = await axios.get('/api/courses/getAllcourses');
+      let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/courses/getAllcourses');
       // console.log(response.data);
       let arr = response.data;
       arr.reverse();

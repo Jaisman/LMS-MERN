@@ -19,7 +19,7 @@ const TeacherProfile = () => {
         try {
           let token = localStorage.getItem('token')
 
-          let response = await axios.get('/api/auth/verify',{
+          let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/auth/verify',{
               headers:{
                   token:token
               }
@@ -48,7 +48,7 @@ const TeacherProfile = () => {
     let handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        let response = await axios.post(`/api/teacher/teacherUpdate`, {
+        let response = await axios.post(`https://lms-mern-aaj1.onrender.com/api/teacher/teacherUpdate`, {
           ...teacher
         });
   

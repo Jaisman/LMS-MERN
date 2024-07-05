@@ -39,7 +39,7 @@ const CourseOverview = () => {
   useEffect(()=>{
      async function fetchCourse(){
       try {
-        let response = await axios.get('/api/courses/fetchCourse',{
+        let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/courses/fetchCourse',{
           params:{
             id:courseId
           }
@@ -68,7 +68,7 @@ const CourseOverview = () => {
 
   const addToCart = async()=>{
     try {
-       let response = await axios.post('/api/student/addToCart',{courseData},{
+       let response = await axios.post('https://lms-mern-aaj1.onrender.com/api/student/addToCart',{courseData},{
         params:{
            id:id
         }
@@ -95,7 +95,7 @@ const CourseOverview = () => {
     const headers={
       "Content-Type":"application/json"
     }
-    const response = await axios.post('/api/courses/create-checkout-session',body,{
+    const response = await axios.post('https://lms-mern-aaj1.onrender.com/api/courses/create-checkout-session',body,{
       headers:headers
     })
     const session = response.data;
@@ -107,7 +107,7 @@ const CourseOverview = () => {
     setCheckResult(result);
     console.log(checkResult);
     if(result){
-      const newResponse = await axios.get('/api/courses/check',result);
+      const newResponse = await axios.get('https://lms-mern-aaj1.onrender.com/api/courses/check',result);
     }
 
   }

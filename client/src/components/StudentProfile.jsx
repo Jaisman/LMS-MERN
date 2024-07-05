@@ -43,7 +43,7 @@ const StudentProfile = () => {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.post(`/api/student/teacherUpdate`, {
+            let response = await axios.post(`https://lms-mern-aaj1.onrender.com/api/student/teacherUpdate`, {
                 ...student
             });
 

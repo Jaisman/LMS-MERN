@@ -20,7 +20,7 @@ const CourseForm = () => {
 
   let courseDataFetch = async () => {
     try {
-      const response = await axios.get('/api/courses/getCourse', {
+      const response = await axios.get('https://lms-mern-aaj1.onrender.com/api/courses/getCourse', {
         params: {
           courseIdValue: courseId,
         },
