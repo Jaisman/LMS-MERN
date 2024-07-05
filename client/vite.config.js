@@ -3,10 +3,8 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   server: {
-    host:'localhost',
-    port:'5173',
     proxy: {
-      '/api':'http://localhost:5010',
+      '/api': 'https://lms-mern-aaj1.onrender.com',
     },
   },
   plugins: [react()],
