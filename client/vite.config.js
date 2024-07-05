@@ -6,7 +6,7 @@ export default defineConfig({
     host:'localhost',
     port:'5173',
     proxy: {
-      '/api':'http://localhost:5010',
+      '/api':'https://lms-mern-ten.vercel.app',
     },
   },
   plugins: [react()],
