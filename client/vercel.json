@@ -5,14 +5,14 @@
         "src": "client/package.json",
         "use": "@vercel/static-build",
         "config": {
-          "distDir": "client/dist" 
+          "distDir": "client/dist"
         }
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "http://localhost:5010/api/$1",
+        "dest": "https://lms-mern-ten.vercel.app/api/$1",
         "methods": ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"]
       },
       {
