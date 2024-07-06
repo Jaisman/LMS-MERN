@@ -22,7 +22,7 @@ const port = process.env.PORT || 5010;
 // app.use(cors());
 
 app.use(cors({
-  origin: 'https://lms-client.netlify.app',
+  origin: 'https://lms-world.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
