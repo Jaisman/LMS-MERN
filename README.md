@@ -148,6 +148,6 @@ Want to contribute? Follow these steps:
 This project is licensed under the MIT License.
 
 ## 🎉 Acknowledgements
-🔹 Backend development by **IVEOND** 💻  
+🔹 Backend development by **Sarah Maheen** 💻  
 🔹 Frontend development by **Batchmate** 🎨
 
