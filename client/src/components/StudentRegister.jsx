@@ -5,6 +5,7 @@ import GoogleAuth from './GoogleAuth';
 import Toast from "./Toast";
 
 const StudentRegister = () => {
+    const API = import.meta.env.VITE_PUBLIC_URL;
     const navigate = useNavigate();
     const [showAlert, setShowAlert] = useState(false);
     const [toast, setToast] = useState(null);
@@ -37,7 +38,7 @@ const StudentRegister = () => {
     let handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            let response = await axios.post(`https://lms-mern-aaj1.onrender.com/api/student/studentRegister`, {
+            let response = await axios.post(`${API}/api/student/studentRegister`, {
                 ...student
             });
 

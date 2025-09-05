@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import GlobalContext from "./GlobalContext";
 const AppContext = ({ children }) => {
+    const API = import.meta.env.VITE_PUBLIC_URL || 'http://localhost:5000';
     const [user, setUser] = useState({});
     const [userId, setUserId] = useState('');
     const [userAuth, setUserAuth] = useState(false)
@@ -22,15 +23,16 @@ const AppContext = ({ children }) => {
         async function authUser() {
             try {
                 let token = localStorage.getItem('token')
-                let response = await axios.get('https://lms-mern-aaj1.onrender.com/api/auth/verify', {
+                console.log("Token from localStorage:", token);
+                let response = await axios.get(`${API}/api/auth/verify`, {
                     headers: {
-                        token: token
+                        Authorization: `Bearer ${token}`
                     }
                 })
                 let details = response.data.userDetails;
                 let userId = details._id;
                 if (details.role === 'student') {
-                    let userResponse = await axios.get('https://lms-mern-aaj1.onrender.com/api/student/findStudent', {
+                    let userResponse = await axios.get(`${API}/api/student/findStudent`, {
                         params: {
                             id: userId
                         }
@@ -41,7 +43,7 @@ const AppContext = ({ children }) => {
                     // console.log(userResponse.data, 'findTeacher')
 
                 } else if (details.role === 'teacher') {
-                    let userResponse = await axios.get('https://lms-mern-aaj1.onrender.com/api/teacher/findTeacher', {
+                    let userResponse = await axios.get(`${API}/api/teacher/findTeacher`, {
                         params: {
                             id: userId
                         }

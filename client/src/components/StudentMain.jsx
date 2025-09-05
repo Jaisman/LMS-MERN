@@ -7,6 +7,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 const StudentMain = () => {
+  const API = import.meta.env.PUBLIC_URL;
   const { user, setUser, userAuth, login, checkUser,navigate } = useGlobalContext();
   // const navigate = useNavigate()
   const [home, setHome] = useState(true)

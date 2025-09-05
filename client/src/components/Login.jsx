@@ -6,6 +6,7 @@ import { useGlobalContext } from "../GlobalContext";
 import Toast from "./Toast";
 
 const Login= () => {
+    const API = import.meta.env.VITE_PUBLIC_URL;
     const navigate = useNavigate();
     const [toast, setToast] = useState(null);
     let {login,setLogin,userAuth,setUserAuth} = useGlobalContext()
@@ -31,7 +32,7 @@ const Login= () => {
     let handleSubmit = async (e) => {
       e.preventDefault();
      try {
-       let response = await axios.post('https://lms-mern-aaj1.onrender.com/api/login/loginUser',{
+       let response = await axios.post(`${API}/api/login/loginUser`,{
         ...userLoginData
        }) 
        let role = response.data.role;
@@ -43,9 +44,7 @@ const Login= () => {
             );
             localStorage.setItem('token',response.data.token)
             setUserAuth(true)
-            setTimeout(()=>{
-                navigate('/studentMain');
-            },2000)
+            navigate('/studentMain');
         } else {
             showToast("Something went wrong!");
         }

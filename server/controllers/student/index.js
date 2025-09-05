@@ -1,45 +1,56 @@
 import express from 'express'
 import StudentModel from '../../models/StudentModel.js';
-import CourseModel from '../../models/CourseModel.js';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 const router = express.Router()
 
-// import { addCourseValidation, studentRegisteration, userLoginValidations } from '../../middleware/validators/index.js';
-
+const JWT_SECRET = process.env.JWT_SECRET || 'codeforindia';
 router.post('/studentRegister', async (req, res) => {
     try {
-        let { name, email, password, password2, mobileNumber, address } = req.body
-        console.log(req.body)
-
+        let { name, email, password, password2, mobileNumber, address } = req.body;
+        if (!name || !email || !password || !password2) {
+            return res.status(400).json({ error: 'Missing required fields' });
+        }
 
         if (password !== password2) {
-            return res.status(400).json({ error: 'password do not match!!' })
+            return res.status(400).json({ error: 'Passwords do not match' });
         }
-        let findstudent = await StudentModel.findOne({ email })
+
+        let findstudent = await StudentModel.findOne({ email });
         if (findstudent) {
-            res.status(400).json({ error: 'email already exists please login!!' })
+            return res.status(409).json({ error: 'Email already exists, please login' });
         }
+
+        const salt = await bcrypt.genSalt(10);
+        const hashed = await bcrypt.hash(password, salt);
 
         let studentData = {
             name,
             email,
-            password,
+            password: hashed,
             mobileNumber,
             address,
-            role: 'student',
-            // cart:[]
-        }
-        console.log(studentData)
-        let studentDetails = new StudentModel(studentData)
-        await studentDetails.save()
-        res.status(200).json({ success: 'student registered successfully!' })
+            role: 'student'
+        };
+
+        let studentDetails = new StudentModel(studentData);
+        await studentDetails.save();
+
+        const userDetails = {
+            _id: studentDetails._id,
+            name: studentDetails.name,
+            email: studentDetails.email,
+            role: studentDetails.role
+        };
+
+        const token = jwt.sign({ userDetails }, JWT_SECRET, { expiresIn: '1d' });
+
+        return res.status(201).json({ success: 'student registered successfully', userDetails, token });
 
     } catch (error) {
-        console.error(error)
-        res.status(500).json({ error: 'Internal server error' })
-
+        console.error(error.stack || error);
+        return res.status(500).json({ error: 'Internal server error' });
     }
-
 })
 router.post('/studentLogin', async (req, res) => {
     try {
